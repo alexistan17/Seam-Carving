@@ -12,7 +12,7 @@ int main() {
         return -1;
     }
     int pixelsVertical = 500; // amount of pixels to reduce vertically 
-    int pixelsHorizontal = 100; // amount of pixels to reduce horizontally
+    int pixelsHorizontal = 200; // amount of pixels to reduce horizontally
     int targetWidth = img.cols - pixelsVertical;
     int targetHeight = img.rows - pixelsHorizontal;
 
