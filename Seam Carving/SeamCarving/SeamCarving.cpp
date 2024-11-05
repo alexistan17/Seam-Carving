@@ -110,3 +110,67 @@ void drawVerticalSeam(Mat& img, const vector<int>& seam) {
         img.at<Vec3b>(i, seam[i]) = Vec3b(0, 0, 255); // Set seam pixels to red
     }
 }
+
+
+// Function to find the minimum horizontal seam
+vector<int> findHorizontalSeam(const Mat& energyMap) {
+    int rows = energyMap.rows, cols = energyMap.cols;
+    vector<vector<int>> dp(rows, vector<int>(cols, 0));
+    vector<vector<int>> path(rows, vector<int>(cols, 0));
+
+    // Initialize the DP table with the first column of energy values
+    for (int i = 0; i < rows; i++)
+        dp[i][0] = energyMap.at<uchar>(i, 0);
+
+    // Fill the DP table
+    for (int j = 1; j < cols; j++) {
+        for (int i = 0; i < rows; i++) {
+            dp[i][j] = dp[i][j - 1];
+            path[i][j] = i;
+
+            if (i > 0 && dp[i - 1][j - 1] < dp[i][j]) {
+                dp[i][j] = dp[i - 1][j - 1];
+                path[i][j] = i - 1;
+            }
+            if (i < rows - 1 && dp[i + 1][j - 1] < dp[i][j]) {
+                dp[i][j] = dp[i + 1][j - 1];
+                path[i][j] = i + 1;
+            }
+            dp[i][j] += energyMap.at<uchar>(i, j);
+        }
+    }
+
+    // Trace back the path of the minimum seam
+    int minSeam = min_element(dp.begin(), dp.end(),
+        [&](const vector<int>& a, const vector<int>& b) { return a[cols - 1] < b[cols - 1]; }) - dp.begin();
+    vector<int> seam(cols);
+    for (int j = cols - 1; j >= 0; j--) {
+        seam[j] = minSeam;
+        minSeam = path[minSeam][j];
+    }
+    return seam;
+}
+
+// Function to remove a horizontal seam from the image
+Mat removeHorizontalSeam(const Mat& img, const vector<int>& seam) {
+    Mat output(img.rows - 1, img.cols, img.type());
+
+    for (int j = 0; j < img.cols; ++j) {
+        int row = seam[j];
+        for (int i = 0; i < row; ++i) {
+            output.at<Vec3b>(i, j) = img.at<Vec3b>(i, j);
+        }
+        for (int i = row + 1; i < img.rows; ++i) {
+            output.at<Vec3b>(i - 1, j) = img.at<Vec3b>(i, j);
+        }
+    }
+
+    return output;
+}
+
+// Function to draw a horizontal seam on the image
+void drawHorizontalSeam(Mat& img, const vector<int>& seam) {
+    for (int j = 0; j < img.cols; j++) {
+        img.at<Vec3b>(seam[j], j) = Vec3b(0, 0, 255); // Set seam pixels to red
+    }
+}
