@@ -17,10 +17,10 @@ int main() {
     }
 
     std::cout << "Please input the desired end width and height result: ";
-    int desiredVertical{}, desiredHorizontal{};
-    std::cin >> desiredVertical >> desiredHorizontal;
+    int targetWidth{}, targetHeight{};
+    std::cin >> targetWidth >> targetHeight;
 
-    if (desiredVertical <= 0 || desiredHorizontal <= 0 || desiredVertical > img.cols || desiredHorizontal > img.rows) {
+    if (targetWidth <= 0 || targetHeight <= 0 || targetWidth > img.cols || targetHeight > img.rows) {
         cout << "Invalid dimensions provided. Please ensure they are positive and less than the original dimensions." << endl;
         return -1;
     }
@@ -29,8 +29,8 @@ int main() {
     int pixelsHorizontal = 0;  // amount of pixels to reduce vertically
     //int targetWidth = img.cols - pixelsVertical;
     //int targetHeight = img.rows - pixelsHorizontal;
-    int targetWidth = desiredVertical;
-    int targetHeight = desiredHorizontal;
+    //int targetWidth = desiredVertical;
+    //int targetHeight = desiredHorizontal;
 
     char choice;
     do {
