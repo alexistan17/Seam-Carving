@@ -28,7 +28,7 @@ Mat calculateEnergyMap(const Mat& img) {
 
 // Function to find the minimum vertical seam
 vector<int> findVerticalSeam(const Mat& energyMap) {
-	int rows = energyMap.rows + 1, cols = energyMap.cols+1;
+	int rows = energyMap.rows, cols = energyMap.cols;
 	vector<vector<int>> dp(rows, vector<int>(cols, 0));
 	vector<vector<int>> path(rows, vector<int>(cols, 0));
 
