@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\sun-w\\Desktop\\Y3 TRI 1\\CSD3131 Algorithm Analsis\\Assignment 2\\Seam-Carving\\Seam Carving\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AB7011CA-ABEB-43D3-BE57-D9B4C161505B}|SeamCarving\\SeamCarving.vcxproj|C:\\Users\\sun-w\\Desktop\\Y3 TRI 1\\CSD3131 Algorithm Analsis\\Assignment 2\\Seam-Carving\\Seam Carving\\SeamCarving\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{AB7011CA-ABEB-43D3-BE57-D9B4C161505B}|SeamCarving\\SeamCarving.vcxproj|solutionrelative:SeamCarving\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{AB7011CA-ABEB-43D3-BE57-D9B4C161505B}|SeamCarving\\SeamCarving.vcxproj|C:\\Users\\sun-w\\Desktop\\Y3 TRI 1\\CSD3131 Algorithm Analsis\\Assignment 2\\Seam-Carving\\Seam Carving\\SeamCarving\\SeamCarving.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{AB7011CA-ABEB-43D3-BE57-D9B4C161505B}|SeamCarving\\SeamCarving.vcxproj|solutionrelative:SeamCarving\\SeamCarving.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AB7011CA-ABEB-43D3-BE57-D9B4C161505B}|SeamCarving\\SeamCarving.vcxproj|C:\\Users\\sun-w\\Desktop\\Y3 TRI 1\\CSD3131 Algorithm Analsis\\Assignment 2\\Seam-Carving\\Seam Carving\\SeamCarving\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{AB7011CA-ABEB-43D3-BE57-D9B4C161505B}|SeamCarving\\SeamCarving.vcxproj|solutionrelative:SeamCarving\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AB7011CA-ABEB-43D3-BE57-D9B4C161505B}|SeamCarving\\SeamCarving.vcxproj|C:\\Users\\sun-w\\Desktop\\Y3 TRI 1\\CSD3131 Algorithm Analsis\\Assignment 2\\Seam-Carving\\Seam Carving\\SeamCarving\\SeamCarving.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -22,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
@@ -38,25 +38,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "SeamCarving.cpp",
               "DocumentMoniker": "C:\\Users\\sun-w\\Desktop\\Y3 TRI 1\\CSD3131 Algorithm Analsis\\Assignment 2\\Seam-Carving\\Seam Carving\\SeamCarving\\SeamCarving.cpp",
               "RelativeDocumentMoniker": "SeamCarving\\SeamCarving.cpp",
               "ToolTip": "C:\\Users\\sun-w\\Desktop\\Y3 TRI 1\\CSD3131 Algorithm Analsis\\Assignment 2\\Seam-Carving\\Seam Carving\\SeamCarving\\SeamCarving.cpp",
               "RelativeToolTip": "SeamCarving\\SeamCarving.cpp",
-              "ViewState": "AgIAAG0AAAAAAAAAAAAswIgAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-11-05T08:59:41.34Z"
+              "WhenOpened": "2024-11-05T08:59:41.34Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "main.cpp",
               "DocumentMoniker": "C:\\Users\\sun-w\\Desktop\\Y3 TRI 1\\CSD3131 Algorithm Analsis\\Assignment 2\\Seam-Carving\\Seam Carving\\SeamCarving\\main.cpp",
               "RelativeDocumentMoniker": "SeamCarving\\main.cpp",
-              "ToolTip": "C:\\Users\\sun-w\\Desktop\\Y3 TRI 1\\CSD3131 Algorithm Analsis\\Assignment 2\\Seam-Carving\\Seam Carving\\SeamCarving\\main.cpp*",
-              "RelativeToolTip": "SeamCarving\\main.cpp*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAcAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\sun-w\\Desktop\\Y3 TRI 1\\CSD3131 Algorithm Analsis\\Assignment 2\\Seam-Carving\\Seam Carving\\SeamCarving\\main.cpp",
+              "RelativeToolTip": "SeamCarving\\main.cpp",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABUAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-11-05T08:00:21.673Z",
               "EditorCaption": ""
