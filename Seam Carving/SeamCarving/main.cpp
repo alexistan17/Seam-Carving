@@ -1,62 +1,84 @@
 #include "SeamCarving.h"
+#include <cctype>
 
 using namespace cv;
 using namespace std;
 
+#define GREEDY 'G'
+#define DYNAMIC 'D'
+
 int main() {
     // Load the image
-    Mat img = imread("../SeamCarving/Assets/Broadway_tower.jpg");
-    if (img.empty()) 
+    Mat img = imread("../SeamCarving/Assets/pietro-de-grandi-329892-unsplash.jpg");
+    if (img.empty())
     {
         cout << "Image not found!" << endl;
         return -1;
     }
-    int pixelsVertical = 500; // amount of pixels to reduce vertically 
-    int pixelsHorizontal = 200; // amount of pixels to reduce horizontally
+    int pixelsVertical = 400; // amount of pixels to reduce horizonatally 
+    int pixelsHorizontal = 0;  // amount of pixels to reduce vertically
     int targetWidth = img.cols - pixelsVertical;
     int targetHeight = img.rows - pixelsHorizontal;
 
-    // Choose algorithm
     char choice;
-    cout << "Choose algorithm for seam finding (g for Greedy, d for Dynamic Programming): ";
-    cin >> choice;
+    do {
+        std::cout << "Choose algorithm for seam finding (g for Greedy, d for Dynamic Programming): ";
+        std::cin >> choice;
+        choice = std::toupper(choice);
 
-    // Seam carving process
-    while (img.cols > targetWidth && img.rows > targetHeight) 
-    {
-        // Calculate the energy map
-        Mat energyMap = calculateEnergyMap(img);
-
-        // Find the minimum vertical and horizontal seams based on user's choice
-        vector<int> seamVertical, seamHorizontal;
-        if (choice == 'g' || choice == 'G') 
-        {
-            seamVertical = findVerticalSeamGreedy(energyMap);
-            seamHorizontal = findHorizontalSeamGreedy(energyMap);
+        if (choice != GREEDY && choice != DYNAMIC) {
+            std::cout << "Invalid input. Please enter 'g' or 'd'." << std::endl;
         }
-        else 
-        {
-            seamVertical = findVerticalSeam(energyMap);
-            seamHorizontal = findHorizontalSeam(energyMap);
+    } while (choice != GREEDY && choice != DYNAMIC);
+
+    while (img.cols > targetWidth || img.rows > targetHeight) {
+        if (img.cols > targetWidth) {
+            // Recalculate the energy map for the current image size
+            Mat energyMap = calculateEnergyMap(img);
+
+            // Find the vertical seam
+            vector<int> seamVertical;
+
+            if (choice == GREEDY)
+                seamVertical = findVerticalSeamGreedy(energyMap);
+            else
+                seamVertical = findVerticalSeam(energyMap);
+
+            // Optional: visualize the seam before removal
+            Mat imgWithSeam = img.clone();
+            drawVerticalSeam(imgWithSeam, seamVertical);
+            imshow("Seam Carving", imgWithSeam);
+            waitKey(100);
+
+            // Remove the vertical seam
+            img = removeVerticalSeam(img, seamVertical);
         }
 
-        // Draw the seam on the image
-        Mat imgWithSeam = img.clone();  // Clone image to draw the seam without altering original
-        drawVerticalSeam(imgWithSeam, seamVertical);
-        drawHorizontalSeam(imgWithSeam, seamHorizontal);
+        if (img.rows > targetHeight) {
+            // Recalculate the energy map for the current image size
+            Mat energyMap = calculateEnergyMap(img);
 
-        // Display the image with the seam
-        imshow("Seam Carving", imgWithSeam);
-        waitKey(100);  // Wait for 200 ms to see the seam
+            // Find the horizontal seam
+            vector<int> seamHorizontal;
+            
+            if (choice == GREEDY)
+                seamHorizontal = findHorizontalSeamGreedy(energyMap);
+            else
+                seamHorizontal = findHorizontalSeam(energyMap);
 
-        // Remove the seam from the original image
-        img = removeVerticalSeam(img, seamVertical);
-        img = removeHorizontalSeam(img, seamHorizontal);
+            // Optional: visualize the seam before removal
+            Mat imgWithSeam = img.clone();
+            drawHorizontalSeam(imgWithSeam, seamHorizontal);
+            imshow("Seam Carving", imgWithSeam);
+            waitKey(100);
+
+            // Remove the horizontal seam
+            img = removeHorizontalSeam(img, seamHorizontal);
+        }
     }
 
     destroyAllWindows();
     imshow("Final Image", img);
-    // Final result
     waitKey(0);
     return 0;
 }

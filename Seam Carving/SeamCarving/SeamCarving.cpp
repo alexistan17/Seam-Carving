@@ -108,7 +108,13 @@ Mat removeVerticalSeam(const Mat& img, const vector<int>& seam) {
 void drawVerticalSeam(Mat& img, const vector<int>& seam) 
 {
     for (int i = 0; i < img.rows; i++) {
-        img.at<Vec3b>(i, seam[i]) = Vec3b(0, 0, 255); // Set seam pixels to red
+        // Ensure seam[i] is within valid column indices for img
+        if (seam[i] >= 0 && seam[i] < img.cols) {
+            img.at<Vec3b>(i, seam[i]) = Vec3b(0, 0, 255); // Set seam pixels to red
+        }
+        else {
+            cerr << "Warning: seam index out of bounds at row " << i << ": " << seam[i] << endl;
+        }
     }
 }
 
@@ -196,6 +202,12 @@ Mat removeHorizontalSeam(const Mat& img, const vector<int>& seam) {
 // Function to draw a horizontal seam on the image
 void drawHorizontalSeam(Mat& img, const vector<int>& seam) {
     for (int j = 0; j < img.cols; j++) {
-        img.at<Vec3b>(seam[j], j) = Vec3b(0, 0, 255); // Set seam pixels to red
+        // Ensure seam[j] is within valid row indices for img
+        if (seam[j] >= 0 && seam[j] < img.rows) {
+            img.at<Vec3b>(seam[j], j) = Vec3b(0, 0, 255); // Set seam pixels to red
+        }
+        else {
+            cerr << "Warning: seam index out of bounds at column " << j << ": " << seam[j] << endl;
+        }
     }
 }
