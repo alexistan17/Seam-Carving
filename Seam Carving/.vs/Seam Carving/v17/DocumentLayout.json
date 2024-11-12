@@ -1,18 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\a1ker\\Year 3 Tri 1\\Algorithm Analysis\\Assignment 2\\Seam-Carving\\Seam Carving\\",
+  "WorkspaceRootPath": "C:\\Users\\sun-w\\Desktop\\Y3 TRI 1\\CSD3131 Algorithm Analsis\\Assignment 2\\Seam-Carving\\Seam Carving\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AB7011CA-ABEB-43D3-BE57-D9B4C161505B}|SeamCarving\\SeamCarving.vcxproj|C:\\Users\\a1ker\\Year 3 Tri 1\\Algorithm Analysis\\Assignment 2\\Seam-Carving\\Seam Carving\\SeamCarving\\SeamCarving.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{AB7011CA-ABEB-43D3-BE57-D9B4C161505B}|SeamCarving\\SeamCarving.vcxproj|solutionrelative:SeamCarving\\SeamCarving.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{AB7011CA-ABEB-43D3-BE57-D9B4C161505B}|SeamCarving\\SeamCarving.vcxproj|C:\\Users\\sun-w\\Desktop\\Y3 TRI 1\\CSD3131 Algorithm Analsis\\Assignment 2\\Seam-Carving\\Seam Carving\\SeamCarving\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{AB7011CA-ABEB-43D3-BE57-D9B4C161505B}|SeamCarving\\SeamCarving.vcxproj|solutionrelative:SeamCarving\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AB7011CA-ABEB-43D3-BE57-D9B4C161505B}|SeamCarving\\SeamCarving.vcxproj|C:\\Users\\a1ker\\Year 3 Tri 1\\Algorithm Analysis\\Assignment 2\\Seam-Carving\\Seam Carving\\SeamCarving\\SeamCarving.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{AB7011CA-ABEB-43D3-BE57-D9B4C161505B}|SeamCarving\\SeamCarving.vcxproj|C:\\Users\\sun-w\\Desktop\\Y3 TRI 1\\CSD3131 Algorithm Analsis\\Assignment 2\\Seam-Carving\\Seam Carving\\SeamCarving\\SeamCarving.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{AB7011CA-ABEB-43D3-BE57-D9B4C161505B}|SeamCarving\\SeamCarving.vcxproj|solutionrelative:SeamCarving\\SeamCarving.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AB7011CA-ABEB-43D3-BE57-D9B4C161505B}|SeamCarving\\SeamCarving.vcxproj|C:\\Users\\a1ker\\Year 3 Tri 1\\Algorithm Analysis\\Assignment 2\\Seam-Carving\\Seam Carving\\SeamCarving\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{AB7011CA-ABEB-43D3-BE57-D9B4C161505B}|SeamCarving\\SeamCarving.vcxproj|solutionrelative:SeamCarving\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{AB7011CA-ABEB-43D3-BE57-D9B4C161505B}|SeamCarving\\SeamCarving.vcxproj|C:\\Users\\sun-w\\Desktop\\Y3 TRI 1\\CSD3131 Algorithm Analsis\\Assignment 2\\Seam-Carving\\Seam Carving\\SeamCarving\\SeamCarving.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{AB7011CA-ABEB-43D3-BE57-D9B4C161505B}|SeamCarving\\SeamCarving.vcxproj|solutionrelative:SeamCarving\\SeamCarving.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,17 +22,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "SeamCarving.h",
-              "DocumentMoniker": "C:\\Users\\a1ker\\Year 3 Tri 1\\Algorithm Analysis\\Assignment 2\\Seam-Carving\\Seam Carving\\SeamCarving\\SeamCarving.h",
+              "DocumentMoniker": "C:\\Users\\sun-w\\Desktop\\Y3 TRI 1\\CSD3131 Algorithm Analsis\\Assignment 2\\Seam-Carving\\Seam Carving\\SeamCarving\\SeamCarving.h",
               "RelativeDocumentMoniker": "SeamCarving\\SeamCarving.h",
-              "ToolTip": "C:\\Users\\a1ker\\Year 3 Tri 1\\Algorithm Analysis\\Assignment 2\\Seam-Carving\\Seam Carving\\SeamCarving\\SeamCarving.h",
+              "ToolTip": "C:\\Users\\sun-w\\Desktop\\Y3 TRI 1\\CSD3131 Algorithm Analsis\\Assignment 2\\Seam-Carving\\Seam Carving\\SeamCarving\\SeamCarving.h",
               "RelativeToolTip": "SeamCarving\\SeamCarving.h",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAABgAAAA7AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-11-05T08:59:51.896Z",
               "EditorCaption": ""
@@ -41,24 +41,24 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "SeamCarving.cpp",
-              "DocumentMoniker": "C:\\Users\\a1ker\\Year 3 Tri 1\\Algorithm Analysis\\Assignment 2\\Seam-Carving\\Seam Carving\\SeamCarving\\SeamCarving.cpp",
+              "DocumentMoniker": "C:\\Users\\sun-w\\Desktop\\Y3 TRI 1\\CSD3131 Algorithm Analsis\\Assignment 2\\Seam-Carving\\Seam Carving\\SeamCarving\\SeamCarving.cpp",
               "RelativeDocumentMoniker": "SeamCarving\\SeamCarving.cpp",
-              "ToolTip": "C:\\Users\\a1ker\\Year 3 Tri 1\\Algorithm Analysis\\Assignment 2\\Seam-Carving\\Seam Carving\\SeamCarving\\SeamCarving.cpp",
-              "RelativeToolTip": "SeamCarving\\SeamCarving.cpp",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAswHkAAAAiAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\sun-w\\Desktop\\Y3 TRI 1\\CSD3131 Algorithm Analsis\\Assignment 2\\Seam-Carving\\Seam Carving\\SeamCarving\\SeamCarving.cpp*",
+              "RelativeToolTip": "SeamCarving\\SeamCarving.cpp*",
+              "ViewState": "AgIAAFUAAAAAAAAAAAAowG4AAABPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-11-05T08:59:41.34Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "main.cpp",
-              "DocumentMoniker": "C:\\Users\\a1ker\\Year 3 Tri 1\\Algorithm Analysis\\Assignment 2\\Seam-Carving\\Seam Carving\\SeamCarving\\main.cpp",
+              "DocumentMoniker": "C:\\Users\\sun-w\\Desktop\\Y3 TRI 1\\CSD3131 Algorithm Analsis\\Assignment 2\\Seam-Carving\\Seam Carving\\SeamCarving\\main.cpp",
               "RelativeDocumentMoniker": "SeamCarving\\main.cpp",
-              "ToolTip": "C:\\Users\\a1ker\\Year 3 Tri 1\\Algorithm Analysis\\Assignment 2\\Seam-Carving\\Seam Carving\\SeamCarving\\main.cpp",
-              "RelativeToolTip": "SeamCarving\\main.cpp",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA4AAAAcAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\sun-w\\Desktop\\Y3 TRI 1\\CSD3131 Algorithm Analsis\\Assignment 2\\Seam-Carving\\Seam Carving\\SeamCarving\\main.cpp*",
+              "RelativeToolTip": "SeamCarving\\main.cpp*",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAC4AAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-11-05T08:00:21.673Z",
               "EditorCaption": ""

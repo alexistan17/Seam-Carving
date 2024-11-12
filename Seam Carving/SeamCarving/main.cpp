@@ -16,15 +16,29 @@ int main() {
     int targetWidth = img.cols - pixelsVertical;
     int targetHeight = img.rows - pixelsHorizontal;
 
+    // Choose algorithm
+    char choice;
+    cout << "Choose algorithm for seam finding (g for Greedy, d for Dynamic Programming): ";
+    cin >> choice;
+
     // Seam carving process
-    while (img.cols > targetWidth && img.rows > targetHeight) {
+    while (img.cols > targetWidth && img.rows > targetHeight) 
+    {
         // Calculate the energy map
         Mat energyMap = calculateEnergyMap(img);
 
-        // Find the minimum vertical seam
-        vector<int> seamVertical = findVerticalSeam(energyMap);
-        // Find the minimum horizontal seam
-        vector<int> seamHorizontal = findHorizontalSeam(energyMap);
+        // Find the minimum vertical and horizontal seams based on user's choice
+        vector<int> seamVertical, seamHorizontal;
+        if (choice == 'g' || choice == 'G') 
+        {
+            seamVertical = findVerticalSeamGreedy(energyMap);
+            seamHorizontal = findHorizontalSeamGreedy(energyMap);
+        }
+        else 
+        {
+            seamVertical = findVerticalSeam(energyMap);
+            seamHorizontal = findHorizontalSeam(energyMap);
+        }
 
         // Draw the seam on the image
         Mat imgWithSeam = img.clone();  // Clone image to draw the seam without altering original

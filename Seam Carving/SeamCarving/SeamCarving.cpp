@@ -72,7 +72,7 @@ vector<int> findVerticalSeam(const Mat& energyMap) {
 vector<int> findVerticalSeamGreedy(const Mat& energyMap) {
     int rows = energyMap.rows, cols = energyMap.cols;
     vector<int> seam(rows);
-    seam[0] = min_element(energyMap.ptr<uchar>(0), energyMap.ptr<uchar>(0) + cols) - energyMap.ptr<uchar>(0);
+    seam.front() = min_element(energyMap.ptr<uchar>(0), energyMap.ptr<uchar>(0) + cols) - energyMap.ptr<uchar>(0);
 
     for (int i = 1; i < rows; i++) {
         int prevCol = seam[i - 1];
@@ -105,7 +105,8 @@ Mat removeVerticalSeam(const Mat& img, const vector<int>& seam) {
 }
 
 // Function to draw a vertical seam on the image
-void drawVerticalSeam(Mat& img, const vector<int>& seam) {
+void drawVerticalSeam(Mat& img, const vector<int>& seam) 
+{
     for (int i = 0; i < img.rows; i++) {
         img.at<Vec3b>(i, seam[i]) = Vec3b(0, 0, 255); // Set seam pixels to red
     }
@@ -147,6 +148,30 @@ vector<int> findHorizontalSeam(const Mat& energyMap) {
     for (int j = cols - 1; j >= 0; j--) {
         seam[j] = minSeam;
         minSeam = path[minSeam][j];
+    }
+    return seam;
+}
+
+
+// Greedy algorithm to find a horizontal seam
+vector<int> findHorizontalSeamGreedy(const Mat& energyMap) {
+    int rows = energyMap.rows, cols = energyMap.cols;
+    vector<int> seam(cols);
+    seam.front() = min_element(energyMap.ptr<uchar>(0), energyMap.ptr<uchar>(rows)) - energyMap.ptr<uchar>(0);
+
+    for (int j = 1; j < cols; j++) {
+        int prevRow = seam[j - 1];
+        seam[j] = prevRow;
+
+        // Check above
+        if (prevRow > 0 && energyMap.at<uchar>(prevRow - 1, j) < energyMap.at<uchar>(seam[j], j)) {
+            seam[j] = prevRow - 1;
+        }
+
+        // Check below
+        if (prevRow < rows - 1 && energyMap.at<uchar>(prevRow + 1, j) < energyMap.at<uchar>(seam[j], j)) {
+            seam[j] = prevRow + 1;
+        }
     }
     return seam;
 }

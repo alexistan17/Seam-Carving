@@ -21,5 +21,6 @@ void drawVerticalSeam(Mat& img, const vector<int>& seam);
 
 // Horizontal
 vector<int> findHorizontalSeam(const Mat& energyMap);
+vector<int> findHorizontalSeamGreedy(const Mat& energyMap);
 Mat removeHorizontalSeam(const Mat& img, const vector<int>& seam);
 void drawHorizontalSeam(Mat& img, const vector<int>& seam);
