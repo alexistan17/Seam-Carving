@@ -173,8 +173,8 @@ vector<int> findHorizontalSeamGreedy(const Mat& energyMap) {
 
 	//Create a vector of rows with energy
 	vector<int> rowEnergy(rows);
-	for (int i = 0; i < rows; i++) {
-		rowEnergy[i] = energyMap.at<uchar>(i, 0);
+	for (int i = 1; i < rows; i++) {
+		rowEnergy[i-1] = energyMap.at<uchar>(i, 0);
 	}
 
 	//find the minimum energy row

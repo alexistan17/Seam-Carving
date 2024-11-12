@@ -9,13 +9,13 @@ using namespace std;
 
 int main() {
     // Load the image
-    Mat img = imread("../SeamCarving/Assets/Broadway_tower.jpg");
+    Mat img = imread("../SeamCarving/Assets/greedycock.jpg");
     if (img.empty())
     {
         cout << "Image not found!" << endl;
         return -1;
     }
-    int pixelsVertical = 110; // amount of pixels to reduce horizonatally 
+    int pixelsVertical = 690; // amount of pixels to reduce horizonatally 
     int pixelsHorizontal = 0;  // amount of pixels to reduce vertically
     int targetWidth = img.cols - pixelsVertical;
     int targetHeight = img.rows - pixelsHorizontal;
