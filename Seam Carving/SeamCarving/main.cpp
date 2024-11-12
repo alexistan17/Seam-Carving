@@ -9,28 +9,37 @@ using namespace std;
 
 int main() {
     // Load the image
-    Mat img = imread("../SeamCarving/Assets/greedycock.jpg");
+    Mat img = imread("../SeamCarving/Assets/pietro.jpg");
     if (img.empty())
     {
         cout << "Image not found!" << endl;
         return -1;
     }
+    int targetWidth, targetHeight;
 
-    std::cout << "Please input the desired end width and height result: ";
-    int targetWidth{}, targetHeight{};
-    std::cin >> targetWidth >> targetHeight;
+    while (true) {
+        cout << "Please enter the desired target width and height (in pixels)." << endl;
+        cout << "The maximum dimensions are " << img.cols << " (width) by " << img.rows << " (height)." << endl;
+        cout << "Enter width and height separated by a space: ";
 
-    if (targetWidth <= 0 || targetHeight <= 0 || targetWidth > img.cols || targetHeight > img.rows) {
-        cout << "Invalid dimensions provided. Please ensure they are positive and less than the original dimensions." << endl;
-        return -1;
+        cin >> targetWidth >> targetHeight;
+
+        if (cin.fail()) {
+            // Clear error state and ignore invalid input
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid input. Please enter numeric values for width and height." << endl;
+            continue;
+        }
+
+        if (targetWidth > 0 && targetWidth <= img.cols && targetHeight > 0 && targetHeight <= img.rows) {
+            // Valid input, break the loop
+            break;
+        }
+        else {
+            cout << "Invalid dimensions. Ensure width and height are positive and do not exceed the original dimensions." << endl;
+        }
     }
-
-    int pixelsVertical = 400; // amount of pixels to reduce horizonatally 
-    int pixelsHorizontal = 0;  // amount of pixels to reduce vertically
-    //int targetWidth = img.cols - pixelsVertical;
-    //int targetHeight = img.rows - pixelsHorizontal;
-    //int targetWidth = desiredVertical;
-    //int targetHeight = desiredHorizontal;
 
     char choice;
     do {
