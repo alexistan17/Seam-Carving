@@ -8,8 +8,9 @@ using namespace std;
 #define DYNAMIC 'D'
 
 int main() {
+	std::string filename = "../SeamCarving/Assets/pietro.jpg";
     // Load the image
-    Mat img = imread("../SeamCarving/Assets/pietro.jpg");
+    Mat img = imread(filename);
     if (img.empty())
     {
         cout << "Image not found!" << endl;
@@ -100,6 +101,7 @@ int main() {
 
     destroyAllWindows();
     imshow("Final Image", img);
+	imwrite("output.jpg", img); // Save the final image
     waitKey(0);
     return 0;
 }
