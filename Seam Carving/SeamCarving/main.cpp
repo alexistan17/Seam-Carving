@@ -9,7 +9,7 @@ using namespace std;
 
 int main() {
     // Load the image
-    Mat img = imread("../SeamCarving/Assets/greedycock.jpg");
+    Mat img = imread("../SeamCarving/Assets/Broadway_tower.jpg");
     if (img.empty())
     {
         cout << "Image not found!" << endl;
