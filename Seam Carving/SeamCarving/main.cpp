@@ -15,10 +15,22 @@ int main() {
         cout << "Image not found!" << endl;
         return -1;
     }
-    int pixelsVertical = 690; // amount of pixels to reduce horizonatally 
+
+    std::cout << "Please input the desired end width and height result: ";
+    int targetWidth{}, targetHeight{};
+    std::cin >> targetWidth >> targetHeight;
+
+    if (targetWidth <= 0 || targetHeight <= 0 || targetWidth > img.cols || targetHeight > img.rows) {
+        cout << "Invalid dimensions provided. Please ensure they are positive and less than the original dimensions." << endl;
+        return -1;
+    }
+
+    int pixelsVertical = 400; // amount of pixels to reduce horizonatally 
     int pixelsHorizontal = 0;  // amount of pixels to reduce vertically
-    int targetWidth = img.cols - pixelsVertical;
-    int targetHeight = img.rows - pixelsHorizontal;
+    //int targetWidth = img.cols - pixelsVertical;
+    //int targetHeight = img.rows - pixelsHorizontal;
+    //int targetWidth = desiredVertical;
+    //int targetHeight = desiredHorizontal;
 
     char choice;
     do {
