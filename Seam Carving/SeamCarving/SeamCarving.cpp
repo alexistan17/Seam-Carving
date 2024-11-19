@@ -29,37 +29,37 @@ Mat calculateEnergyMap(const Mat& img) {
 // Function to find the minimum vertical seam
 vector<int> findVerticalSeam(const Mat& energyMap) {
 	int rows = energyMap.rows, cols = energyMap.cols;
-	vector<vector<int>> dp(rows, vector<int>(cols, 0));
+	vector<vector<int>> weighted_map(rows, vector<int>(cols, 0));
 	vector<vector<int>> path(rows, vector<int>(cols, 0));
 
-	// Initialize the DP table with the first row of energy values
+	// Initialize the weighted_map table with the first row of energy values
 	for (int j = 0; j < cols; j++)
-		dp[0][j] = energyMap.at<uchar>(0, j);
+		weighted_map[0][j] = energyMap.at<uchar>(0, j);
 
-	// Fill the DP table
+	// Fill the weighted_map table
 	for (int i = 1; i < rows; i++)
 	{
 		for (int j = 0; j < cols; j++)
 		{
-			dp[i][j] = dp[i - 1][j];
+			weighted_map[i][j] = weighted_map[i - 1][j];
 			path[i][j] = j;
 
-			if (j > 0 && dp[i - 1][j - 1] < dp[i][j])
+			if (j > 0 && weighted_map[i - 1][j - 1] < weighted_map[i][j])
 			{
-				dp[i][j] = dp[i - 1][j - 1];
+				weighted_map[i][j] = weighted_map[i - 1][j - 1];
 				path[i][j] = j - 1;
 			}
-			if (j < cols - 1 && dp[i - 1][j + 1] < dp[i][j])
+			if (j < cols - 1 && weighted_map[i - 1][j + 1] < weighted_map[i][j])
 			{
-				dp[i][j] = dp[i - 1][j + 1];
+				weighted_map[i][j] = weighted_map[i - 1][j + 1];
 				path[i][j] = j + 1;
 			}
-			dp[i][j] += energyMap.at<uchar>(i, j);
+			weighted_map[i][j] += energyMap.at<uchar>(i, j);
 		}
 	}
 
 	// Trace back the path of the minimum seam
-	int minSeam = min_element(dp[rows - 1].begin(), dp[rows - 1].end()) - dp[rows - 1].begin();
+	int minSeam = min_element(weighted_map[rows - 1].begin(), weighted_map[rows - 1].end()) - weighted_map[rows - 1].begin();
 	vector<int> seam(rows);
 	for (int i = rows - 1; i >= 0; i--) {
 		seam[i] = minSeam;
@@ -134,34 +134,34 @@ void drawVerticalSeam(Mat& img, const vector<int>& seam)
 // Function to find the minimum horizontal seam
 vector<int> findHorizontalSeam(const Mat& energyMap) {
 	int rows = energyMap.rows, cols = energyMap.cols;
-	vector<vector<int>> dp(rows, vector<int>(cols, 0));
+	vector<vector<int>> weighted_map(rows, vector<int>(cols, 0));
 	vector<vector<int>> path(rows, vector<int>(cols, 0));
 
-	// Initialize the DP table with the first column of energy values
+	// Initialize the weighted_map table with the first column of energy values
 	for (int i = 0; i < rows; i++)
-		dp[i][0] = energyMap.at<uchar>(i, 0);
+		weighted_map[i][0] = energyMap.at<uchar>(i, 0);
 
-	// Fill the DP table
+	// Fill the weighted_map table
 	for (int j = 1; j < cols; j++) {
 		for (int i = 0; i < rows; i++) {
-			dp[i][j] = dp[i][j - 1];
+			weighted_map[i][j] = weighted_map[i][j - 1];
 			path[i][j] = i;
 
-			if (i > 0 && dp[i - 1][j - 1] < dp[i][j]) {
-				dp[i][j] = dp[i - 1][j - 1];
+			if (i > 0 && weighted_map[i - 1][j - 1] < weighted_map[i][j]) {
+				weighted_map[i][j] = weighted_map[i - 1][j - 1];
 				path[i][j] = i - 1;
 			}
-			if (i < rows - 1 && dp[i + 1][j - 1] < dp[i][j]) {
-				dp[i][j] = dp[i + 1][j - 1];
+			if (i < rows - 1 && weighted_map[i + 1][j - 1] < weighted_map[i][j]) {
+				weighted_map[i][j] = weighted_map[i + 1][j - 1];
 				path[i][j] = i + 1;
 			}
-			dp[i][j] += energyMap.at<uchar>(i, j);
+			weighted_map[i][j] += energyMap.at<uchar>(i, j);
 		}
 	}
 
 	// Trace back the path of the minimum seam
-	int minSeam = min_element(dp.begin(), dp.end(),
-		[&](const vector<int>& a, const vector<int>& b) { return a[cols - 1] < b[cols - 1]; }) - dp.begin();
+	int minSeam = min_element(weighted_map.begin(), weighted_map.end(),
+		[&](const vector<int>& a, const vector<int>& b) { return a[cols - 1] < b[cols - 1]; }) - weighted_map.begin();
 	vector<int> seam(cols);
 	for (int j = cols - 1; j >= 0; j--) {
 		seam[j] = minSeam;
