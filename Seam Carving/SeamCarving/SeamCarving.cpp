@@ -72,23 +72,28 @@ vector<int> findVerticalSeam(const Mat& energyMap) {
 vector<int> findVerticalSeamGreedy(const Mat& energyMap) {
 	int rows = energyMap.rows, cols = energyMap.cols;
 	vector<int> seam(rows);
-	//Create a vector of rows with energy
-	vector<int> colEnergy(cols);
-	for (int i = 1; i < cols; i++) {
-		colEnergy[i-1] = energyMap.at<uchar>(0, i);
-	}
 
-	//find the minimum energy row
-	seam.front() = min_element(colEnergy.begin(), colEnergy.end()) - colEnergy.begin();
+	// Start with the minimum energy pixel in the first row, excluding the first and last columns
+	int minSeam = min_element(energyMap.ptr<uchar>(0) + 1, energyMap.ptr<uchar>(0) + cols - 1) - energyMap.ptr<uchar>(0);
+	seam[0] = minSeam;
 
+	// Iterate over each row to greedily choose the next pixel in the seam
 	for (int i = 1; i < rows; i++) {
 		int prevCol = seam[i - 1];
-		seam[i] = prevCol;
-		if (prevCol > 0 && energyMap.at<uchar>(i, prevCol - 1) < energyMap.at<uchar>(i, seam[i]))
-			seam[i] = prevCol - 1;
-		if (prevCol < cols - 1 && energyMap.at<uchar>(i, prevCol + 1) < energyMap.at<uchar>(i, seam[i]))
-			seam[i] = prevCol + 1;
+		int minEnergy = INT_MAX;
+		int minCol = prevCol;
+
+		// Check the pixel directly above, and the ones to the left and right (if within bounds)
+		for (int j = max(1, prevCol - 1); j <= min(prevCol + 1, cols - 2); j++) {
+			if (energyMap.at<uchar>(i, j) < minEnergy) {
+				minEnergy = energyMap.at<uchar>(i, j);
+				minCol = j;
+			}
+		}
+
+		seam[i] = minCol; // Record the column of the chosen pixel
 	}
+
 	return seam;
 }
 
@@ -171,31 +176,27 @@ vector<int> findHorizontalSeamGreedy(const Mat& energyMap) {
 	int rows = energyMap.rows, cols = energyMap.cols;
 	vector<int> seam(cols);
 
-	//Create a vector of rows with energy
-	vector<int> rowEnergy(rows);
-	for (int i = 1; i < rows; i++) {
-		rowEnergy[i-1] = energyMap.at<uchar>(i, 0);
-	}
+	// Start with the minimum energy pixel in the first column, excluding the first and last rows
+	int minSeam = min_element(energyMap.col(0).ptr<uchar>() + 1, energyMap.col(0).ptr<uchar>() + rows - 1) - energyMap.col(0).ptr<uchar>();
+	seam[0] = minSeam;
 
-	//find the minimum energy row
-	seam.front() = min_element(rowEnergy.begin(), rowEnergy.end()) - rowEnergy.begin();
-
-	//seam.front() = min_element(energyMap.ptr<uchar>(0), energyMap.ptr<uchar>(rows)) - energyMap.ptr<uchar>(0);
-
+	// Iterate over each column to greedily choose the next pixel in the seam
 	for (int j = 1; j < cols; j++) {
 		int prevRow = seam[j - 1];
-		seam[j] = prevRow;
+		int minEnergy = INT_MAX;
+		int minRow = prevRow;
 
-		// Check above
-		if (prevRow > 0 && energyMap.at<uchar>(prevRow - 1, j) < energyMap.at<uchar>(seam[j], j)) {
-			seam[j] = prevRow - 1;
+		// Check the pixel directly left, and the ones above and below (if within bounds)
+		for (int i = max(1, prevRow - 1); i <= min(prevRow + 1, rows - 2); i++) {
+			if (energyMap.at<uchar>(i, j) < minEnergy) {
+				minEnergy = energyMap.at<uchar>(i, j);
+				minRow = i;
+			}
 		}
 
-		// Check below
-		if (prevRow < rows - 1 && energyMap.at<uchar>(prevRow + 1, j) < energyMap.at<uchar>(seam[j], j)) {
-			seam[j] = prevRow + 1;
-		}
+		seam[j] = minRow; // Record the row of the chosen pixel
 	}
+
 	return seam;
 }
 
