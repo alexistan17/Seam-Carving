@@ -30,7 +30,7 @@ Mat calculateEnergyMap(const Mat& img) {
 vector<int> findVerticalSeam(const Mat& energyMap) {
 	int rows = energyMap.rows, cols = energyMap.cols;
 	vector<vector<int>> weighted_map(rows, vector<int>(cols, 0));
-	vector<vector<int>> path(rows, vector<int>(cols, 0));
+	vector<vector<int>> path_table(rows, vector<int>(cols, 0));
 
 	// Initialize the weighted_map table with the first row of energy values
 	for (int j = 0; j < cols; j++)
@@ -42,17 +42,17 @@ vector<int> findVerticalSeam(const Mat& energyMap) {
 		for (int j = 0; j < cols; j++)
 		{
 			weighted_map[i][j] = weighted_map[i - 1][j];
-			path[i][j] = j;
+			path_table[i][j] = j;
 
 			if (j > 0 && weighted_map[i - 1][j - 1] < weighted_map[i][j])
 			{
 				weighted_map[i][j] = weighted_map[i - 1][j - 1];
-				path[i][j] = j - 1;
+				path_table[i][j] = j - 1;
 			}
 			if (j < cols - 1 && weighted_map[i - 1][j + 1] < weighted_map[i][j])
 			{
 				weighted_map[i][j] = weighted_map[i - 1][j + 1];
-				path[i][j] = j + 1;
+				path_table[i][j] = j + 1;
 			}
 			weighted_map[i][j] += energyMap.at<uchar>(i, j);
 		}
@@ -63,7 +63,7 @@ vector<int> findVerticalSeam(const Mat& energyMap) {
 	vector<int> seam(rows);
 	for (int i = rows - 1; i >= 0; i--) {
 		seam[i] = minSeam;
-		minSeam = path[i][minSeam];
+		minSeam = path_table[i][minSeam];
 	}
 	return seam;
 }
@@ -135,7 +135,7 @@ void drawVerticalSeam(Mat& img, const vector<int>& seam)
 vector<int> findHorizontalSeam(const Mat& energyMap) {
 	int rows = energyMap.rows, cols = energyMap.cols;
 	vector<vector<int>> weighted_map(rows, vector<int>(cols, 0));
-	vector<vector<int>> path(rows, vector<int>(cols, 0));
+	vector<vector<int>> path_table(rows, vector<int>(cols, 0));
 
 	// Initialize the weighted_map table with the first column of energy values
 	for (int i = 0; i < rows; i++)
@@ -145,15 +145,15 @@ vector<int> findHorizontalSeam(const Mat& energyMap) {
 	for (int j = 1; j < cols; j++) {
 		for (int i = 0; i < rows; i++) {
 			weighted_map[i][j] = weighted_map[i][j - 1];
-			path[i][j] = i;
+			path_table[i][j] = i;
 
 			if (i > 0 && weighted_map[i - 1][j - 1] < weighted_map[i][j]) {
 				weighted_map[i][j] = weighted_map[i - 1][j - 1];
-				path[i][j] = i - 1;
+				path_table[i][j] = i - 1;
 			}
 			if (i < rows - 1 && weighted_map[i + 1][j - 1] < weighted_map[i][j]) {
 				weighted_map[i][j] = weighted_map[i + 1][j - 1];
-				path[i][j] = i + 1;
+				path_table[i][j] = i + 1;
 			}
 			weighted_map[i][j] += energyMap.at<uchar>(i, j);
 		}
@@ -165,7 +165,7 @@ vector<int> findHorizontalSeam(const Mat& energyMap) {
 	vector<int> seam(cols);
 	for (int j = cols - 1; j >= 0; j--) {
 		seam[j] = minSeam;
-		minSeam = path[minSeam][j];
+		minSeam = path_table[minSeam][j];
 	}
 	return seam;
 }
